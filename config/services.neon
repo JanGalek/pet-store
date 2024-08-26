@@ -1,0 +1,10 @@
+services:
+	- App\Core\RouterFactory::createRouter
+	- EFabrica\Services\Uuid\Generator
+
+
+search:
+	-	in: %appDir%
+		classes:
+			- *Factory
+			- *Facade
