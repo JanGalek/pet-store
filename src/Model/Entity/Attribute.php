@@ -2,7 +2,13 @@
 
 namespace EFabrica\Model\Entity;
 
-class Attribute
+interface Attribute
 {
-    pu
+    public function setName(string $name): void;
+    public function getName(): string;
+
+    public function setValue(mixed $value): mixed;
+    public function getValue(): mixed;
+
+
 }
