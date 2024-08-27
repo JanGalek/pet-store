@@ -37,5 +37,9 @@
 		"allow-plugins": {
 			"symfony/thanks": true
 		}
+	},
+	"platform": {
+		"ext-gmp": "*",
+		"ext-bcmath": "*"
 	}
 }
