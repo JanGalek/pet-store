@@ -13,8 +13,10 @@ class PetStore
 
     public function __construct(private Client $client)
     {
-        $response = $this->client->post(self::AUTH_URI);
+        $response = $this->client->get(self::AUTH_URI);
         bdump($response);
+        bdump($response->getBody());
+        bdump((string) $response->getBody());
     }
 
     public function createUri(string $uri): string

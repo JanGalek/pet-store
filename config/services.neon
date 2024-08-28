@@ -1,6 +1,7 @@
 services:
 	- App\Core\RouterFactory::createRouter
 	- EFabrica\Services\Uuid\Generator
+	- EFabrica\Services\PetStore
 
 
 search:
