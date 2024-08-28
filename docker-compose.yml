@@ -1,8 +1,29 @@
 services:
   nginx:
     image: nginx:1.27
+    labels:
+      - "traefik.enable=true"
+      - "traefik.port=80"
+      - "traefik.http.routers.petstore_local.rule=Host(`petstore.local`)"
+      - "traefik.http.services.petstore_local.loadbalancer.server.port=80"
+    volumes:
+      - .:/var/www/html
+      - ./.docker/nginx/conf/nginx.conf:/etc/nginx/nginx.conf
+      - ./.docker/nginx/conf/sites/:/etc/nginx/sites-available
+      - ./.docker/nginx/conf/conf.d:/etc/nginx/conf.d
+    depends_on:
+      - php
+    networks:
+      - traefik
 
   php:
     image: php:8.3-fpm
-    links:
-      - nginx
+    volumes:
+      - .:/var/www/html
+    networks:
+      - traefik
+
+networks:
+  traefik:
+    name: traefik
+    external: true
