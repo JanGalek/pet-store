@@ -9,6 +9,7 @@ class Attributes
      */
     public function __construct(private iterable $attributes = [])
     {
+      
     }
 
     /**
